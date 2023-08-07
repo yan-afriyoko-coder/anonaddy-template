@@ -4,6 +4,7 @@ mix
   .js('resources/js/app.js', 'public/js')
   .vue()
   .js('resources/js/webauthn.js', 'public/js')
+  .js('resources/js/custom.js', 'public/js')
   .postCss('resources/css/app.css', 'public/css', [
     require('postcss-import'),
     require('tailwindcss'),

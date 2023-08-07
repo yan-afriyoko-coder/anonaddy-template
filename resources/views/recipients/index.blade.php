@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('breadcrumb')
+    a
+@endsection
 @section('content')
     <div class="container py-8">
         @include('shared.status')

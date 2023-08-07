@@ -19,35 +19,30 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('custom/css/app.css')}}" />
 </head>
-<body class="bg-grey-50 antialiased text-grey-900">
-    <div id="app" v-cloak>
+<body class="py-5 md:py-0">
 
-        @include('nav.top-nav')
-        <div class="flex flex-wrap main-dev ">
-            <div class="md:w-1/4 shadow" style=" background-color: #E9EDF8;">
-                @include('nav.side-nav')
+        @include('layouts._particles._sidebar-mobile')
+   
+        @include('layouts._particles._topbar')
+        <div class="flex overflow-hidden">
+
+            @include('layouts._particles._sidebar')
+           
+            <div class="content" id="app" v-cloak>
+                 @yield('content')
+             
+                @if(App\Helpers\GitVersionHelper::version())
+                    <footer>
+                        <div class=" py-1 text-sm text-grey-500 text-center"><a href="https://github.com/anonaddy/anonaddy/releases/tag/v{{ App\Helpers\GitVersionHelper::version() }}" target="_blank" rel="nofollow noreferrer noopener" class="block sm:inline">v{{ App\Helpers\GitVersionHelper::version() }}</a></div>
+                    </footer>
+                @endif
+                <notifications position="bottom right" /> 
             </div>
-            <div class="md:w-3/4">
-                @yield('content')
-            </div>
-
         </div>
-
-
-        <notifications position="bottom right" />
-    </div>
-
-    @if(App\Helpers\GitVersionHelper::version())
-        <footer>
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
-            <div class="border-t border-grey-200 py-4 text-sm text-grey-500 text-center"><a href="https://github.com/anonaddy/anonaddy/releases/tag/v{{ App\Helpers\GitVersionHelper::version() }}" target="_blank" rel="nofollow noreferrer noopener" class="block sm:inline">v{{ App\Helpers\GitVersionHelper::version() }}</a></div>
-        </div>
-        </footer>
-    @endif
-
-    <!-- Scripts -->
+       
+    <script src="{{asset('custom/js/app.js')}}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

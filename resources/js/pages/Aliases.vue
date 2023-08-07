@@ -1,82 +1,89 @@
 <template>
-  <div class="aliases">
-    <div class="flex flex-wrap flex-row items-center justify-between mb-8 md:px-2 lg:px-6">
-      <div
-        class="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 md:-mx-2 lg:-mx-6 rounded overflow-hidden shadow-md bg-white mb-4 lg:mb-4 xl:mb-4"
-      >
-        <div class="p-4 flex  stats-box justify-between relative">
-            <div class="font-bold text-xl md:text-3xl text-indigo-800">
-              <p class="text-grey-300 stats-text text-sm tracking-wide uppercase">Active</p>
-             <span class="stats-no">{{ totalActive }}</span> 
+  <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-12 2xl:col-span-9">
+            <div class="grid grid-cols-12 gap-6">
+                <!-- BEGIN: General Report -->
+                <div class="col-span-12 mt-2">
+                    <div class="intro-y flex items-center h-10">
+                        <h2 class="text-lg font-medium truncate mr-5">
+                            Aliases
+                        </h2>
+                    </div>
+                    <div class="grid grid-cols-12 gap-6 mt-5">
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                        <img src="/imgs/ok.png" class="report-box__icon text-primary" alt="icon">
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ totalActive }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Active</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                      <img src="/imgs/down_graph.png" class="report-box__icon text-primary" alt="icon">
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ totalInactive }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Inactive</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                      <img src="/imgs/right.png" class="report-box__icon text-primary" alt="icon">
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ totalForwarded }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Email Forwarded</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                      <img src="/imgs/cross.png" class="report-box__icon text-primary" alt="icon">
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ totalBlocked }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Emails Blocked</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                      <img src="/imgs/email.png" class="report-box__icon text-primary" alt="icon">
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ totalReplies }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Emails Replies</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+                            <div class="report-box zoom-in">
+                                <div class="box p-5">
+                                    <div class="flex">
+                                      <img src="/imgs/up_graph.png" class="report-box__icon text-primary" alt="icon">
+                                    </div>
+                                    <div class="text-3xl font-medium leading-8 mt-6">{{ bandwidthMb }}</div>
+                                    <div class="text-base text-slate-500 mt-1">Bandwidh</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <img src="/imgs/ok.png" class="inline stats-img ok-img"  alt="icon">
-
         </div>
-      </div>
-      <div
-        class="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 md:-mx-2 lg:-mx-6 rounded overflow-hidden shadow-md bg-white mb-4 lg:mb-4 xl:mb-4"
-      >
-        <div class="p-4 flex  stats-box justify-between relative">
-            <div class="font-bold text-xl md:text-3xl text-indigo-800">
-              <p class="text-grey-300 stats-text text-sm tracking-wide uppercase">Inactive</p>
-            <span class="stats-no">{{ totalInactive }}</span> 
-            </div>
-            <img src="/imgs/down_graph.png" class="inline stats-img down-img"  alt="icon">
-
-        </div>
-      </div>
-      <div
-        class="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 md:-mx-2 lg:-mx-6 rounded overflow-hidden shadow-md bg-white mb-4 lg:mb-4 xl:mb-4"
-      >
-        <div class="p-4 flex  stats-box justify-between relative">
-            <div class="font-bold text-xl md:text-3xl text-indigo-800">
-              <p class="text-grey-300 stats-text text-sm tracking-wide uppercase">Emails Forwarded</p>
-            <span class="stats-no">{{ totalForwarded }}</span> 
-            </div>
-            <img src="/imgs/right.png" class="inline stats-img right-img"  alt="icon">
-
-        </div>
-      </div>
-      <div
-        class="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 md:-mx-2 lg:-mx-6 rounded overflow-hidden shadow-md bg-white mb-4 lg:mb-0"
-      >
-        <div class="p-4 flex  stats-box justify-between relative">
-            <div class="font-bold text-xl md:text-3xl text-indigo-800">
-              <p class="text-grey-300 stats-text text-sm tracking-wide uppercase">Emails Blocked</p>
-            <span class="stats-no">{{ totalBlocked }}</span> 
-            </div>
-            <img src="/imgs/cross.png" class="inline stats-img cross-img"  alt="icon">
-
-        </div>
-        
-      </div>
-      <div
-        class="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 md:-mx-2 lg:-mx-6 rounded overflow-hidden shadow-md bg-white mb-4 md:mb-0"
-      >
-        <div class="p-4 flex  stats-box justify-between relative">
-            <div class="font-bold text-xl md:text-3xl text-indigo-800">
-              <p class="text-grey-300 stats-text text-sm tracking-wide uppercase">Email Replies</p>
-            <span class="stats-no">{{ totalReplies }}</span> 
-            </div>
-            <img src="/imgs/email.png" class="inline stats-img email-img"  alt="icon">
-
-        </div>
-
-      </div>
-      <div
-        class="w-full md:w-1/2 lg:w-1/3 xl:w-1/3 md:-mx-2 lg:-mx-6 rounded overflow-hidden shadow-md bg-white"
-      >
-        <div class="p-4 flex  stats-box justify-between relative">
-            <div class="font-bold text-xl md:text-3xl text-indigo-800">
-              <p class="text-grey-300 stats-text text-sm tracking-wide uppercase">Bandwidth ({{ month }})</p>
-            <span class="stats-no">{{ bandwidthMb }}</span> 
-            </div>
-            <img src="/imgs/up_graph.png" class="inline stats-img up-img"  alt="icon">
-
-        </div>
-      </div>
-    </div>
-    <div class="card bg-white p-2 rounded shadow overflow-x-auto">
+  </div>
+  <div class="aliases ">
+   
+    <div class="card bg-white p-2 rounded shadow overflow-x-auto mt-12">
       <div class="card-title aliases-title p-3">
         <h2 class="text-grey-700 md:text-2xl font-semibold">Aliases</h2>
       </div>
